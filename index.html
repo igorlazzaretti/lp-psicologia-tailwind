@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Dra. Aline Oliveira - Psicóloga</title>
+    <link href="https://fonts.googleapis.com" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&amp;family=Playfair+Display:wght@700&amp;display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/@alpinejs/collapse@3.x.x/dist/cdn.min.js"></script>
+    <script defer="" src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#F0A690', // Peach color
+                        secondary: '#1C3144', // Dark Blue
+                        'background-light': '#F8F9FA',
+                        'background-dark': '#121212',
+                        'surface-light': '#FFFFFF',
+                        'surface-dark': '#1E1E1E',
+                        'text-light': '#333333',
+                        'text-dark': '#E0E0E0',
+                        'text-muted-light': '#6c757d',
+                        'text-muted-dark': '#9ca3af',
+                    },
+                    fontFamily: {
+                        display: ["Playfair Display", "serif"],
+                        body: ["Montserrat", "sans-serif"],
+                    },
+                    borderRadius: {
+                        DEFAULT: "0.5rem",
+                    },
+                },
+            },
+        };
+    </script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+</head>
+
+<body
+    class="bg-background-light dark:bg-background-dark text-text-light dark:text-text-dark font-body transition-colors duration-300">
+
+    <header
+        class="fixed top-0 left-0 right-0 z-50 bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-sm shadow-md transition-all duration-300"
+        id="header">
+
+        <!-- Progress Bar (JS-controlled) -->
+        <div id="progress-bar" class="fixed top-0 left-0 z-[9999] h-0.5 bg-primary w-0" aria-hidden="true"></div>
+
+
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a class="text-2xl font-bold font-display text-secondary dark:text-primary" href="#hero">Dra. Aline</a>
+            <nav class="hidden md:flex items-center space-x-8">
+                <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#hero">Início</a>
+                <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#about">Sobre Mim</a>
+                <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#services">Serviços</a>
+                <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#faq">FAQ</a>
+                <a class="hover:text-primary dark:hover:text-primary transition-colors"
+                    href="#testimonials">Depoimentos</a>
+                <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Contato</a>
+            </nav>
+            <!-- Theme toggle: moon = switch to dark, sun = switch to light -->
+            <div class="flex items-center">
+                <button id="theme-toggle-button" aria-label="Alternar tema" title="Alternar tema"
+                    class="ml-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                    <!-- Moon icon: visible in light mode (click to go dark) -->
+                    <svg id="icon-moon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-6 h-6 inline-block dark:hidden text-secondary dark:text-primary">
+                        <path d="M21.752 15.002A9 9 0 0112 3v0a9 9 0 100 18 9 9 0 009.752-5.998z" />
+                    </svg>
+                    <!-- Sun icon: visible in dark mode (click to go light) -->
+                    <svg id="icon-sun" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"
+                        class="w-6 h-6 hidden dark:inline-block text-secondary dark:text-primary">
+                        <path
+                            d="M12 4.5a1 1 0 011-1h0a1 1 0 010 2 1 1 0 01-1-1zM12 18.5a1 1 0 011 1h0a1 1 0 01-2 0 1 1 0 011-1zM4.5 12a1 1 0 01-1-1h0a1 1 0 012 0 1 1 0 01-1 1zM18.5 12a1 1 0 011-1h0a1 1 0 010 2 1 1 0 01-1-1zM6.343 6.343a1 1 0 011.414 0 1 1 0 010 1.414 1 1 0 01-1.414-1.414zM16.243 16.243a1 1 0 011.414 0 1 1 0 010 1.414 1 1 0 01-1.414-1.414zM6.343 17.657a1 1 0 011.414 0 1 1 0 010 1.414 1 1 0 01-1.414-1.414zM16.243 7.757a1 1 0 011.414 0 1 1 0 010 1.414 1 1 0 01-1.414-1.414zM12 8a4 4 0 100 8 4 4 0 000-8z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="min-h-screen flex items-center bg-background-light dark:bg-background-dark pt-20" id="hero">
+            <div class="container mx-auto px-6 flex flex-col md:flex-row items-center justify-between">
+                <div class="md:w-1/2 text-center md:text-left mb-10 md:mb-0">
+                    <h1 class="text-4xl md:text-6xl font-bold font-display text-secondary dark:text-white mb-4">Encontre
+                        seu equilíbrio e bem-estar</h1>
+                    <p class="text-lg text-text-muted-light dark:text-text-muted-dark mb-8">Um espaço seguro e acolhedor
+                        para você explorar seus sentimentos e construir uma vida mais plena e feliz.</p>
+                    <a class="inline-block bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300"
+                        href="#contact">
+                        Agendar Consulta
+                    </a>
+                </div>
+                <div class="md:w-1/2 flex justify-center">
+                    <img alt="Foto da psicóloga Aline Oliveira sorrindo"
+                        class="rounded-full w-80 h-80 md:w-96 md:h-96 object-cover shadow-2xl border-8 border-surface-light dark:border-surface-dark"
+                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuDXbhiLntzr0MkB9y2RuR4ZcNfasphREpYLzv3pfZGXujKpAC-H3PWrjYfHu9MsF9zYKxEZ1s4VfBt9Navm4uKAZU1ZcYBxOp1PwV9j1O3qdJR_nwB2_dsimbdBVW8Z-08Kuv-1NRiO4dqy7ahFfl5IBPJ1-6Z_m-ud6yNwpqwv6hTvc_KoML13aGHxsdDNm8v_ZDUevnIyZdjFqOSQfd_de4LI6NsL3eKbYSfJauoswbtxvP1AmNutFg1eQ_mpWkQofncwoxH9msnY" />
+                </div>
+            </div>
+        </section>
+        <section class="py-20 bg-surface-light dark:bg-surface-dark" id="about">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-secondary dark:text-white">Sobre Mim
+                    </h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mt-2"></div>
+                </div>
+                <div class="flex flex-col md:flex-row items-center gap-12">
+                    <div class="md:w-1/3">
+                        <img alt="Foto profissional da psicóloga em seu consultório" class="rounded-lg shadow-xl w-full"
+                            src="https://lh3.googleusercontent.com/aida-public/AB6AXuA3DLhkjRsoJpZp7KCcRlv5XjqlldpRVBkOCMcigoQ-BL1OgFZyfvs5bcXgoM-hadoNOVtOgfJH31d8x49l2KiRcjAHXFym-ef8E62nzbdqB8oNjGJK-e8bea856Vo_Cy6ymAT4vp7r_ZPpxckPIJmhzacjQXKXdmSLIOGnvyauyu8mJymNybvfwS5UmktXaW13eNAlb0dcsxd3HvRYXGXyfm9Eswug3OWMSezaVbH2UGQWuY1ujlapjLErSP8LYxXHM-ewi7hb7Y66" />
+                    </div>
+                    <div class="md:w-2/3">
+                        <h3 class="text-2xl font-bold font-display text-secondary dark:text-white mb-4">Minha abordagem
+                            e filosofia</h3>
+                        <p class="text-text-muted-light dark:text-text-muted-dark mb-4">
+                            Acredito que cada indivíduo possui a capacidade de superar desafios e alcançar uma vida mais
+                            significativa. Minha abordagem terapêutica é integrativa, combinando técnicas da Terapia
+                            Cognitivo-Comportamental (TCC) e da Psicologia Humanista para criar um plano de tratamento
+                            personalizado que atenda às suas necessidades únicas.
+                        </p>
+                        <p class="text-text-muted-light dark:text-text-muted-dark">
+                            Meu objetivo é fornecer um ambiente empático e livre de julgamentos, onde você possa se
+                            sentir à vontade para explorar seus pensamentos e emoções. Juntos, trabalharemos para
+                            desenvolver ferramentas e estratégias que promovam o autoconhecimento, a resiliência e o
+                            bem-estar duradouro.
+                        </p>
+                        <div class="mt-6 grid grid-cols-2 gap-4">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary text-3xl">workspace_premium</span>
+                                <span class="font-semibold">10+ Anos de Atuação</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined text-primary text-3xl">school</span>
+                                <span class="font-semibold">Especialista em Ansiedade</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-20 bg-background-light dark:bg-background-dark" id="services">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-secondary dark:text-white">Serviços</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mt-2"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div
+                            class="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-primary/10 dark:bg-primary/20">
+                            <span class="material-symbols-outlined text-primary text-4xl">person</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-display mb-2 text-secondary dark:text-white">Terapia
+                            Individual</h3>
+                        <p class="text-text-muted-light dark:text-text-muted-dark">Um espaço dedicado ao seu crescimento
+                            pessoal, autoconhecimento e superação de desafios.</p>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div
+                            class="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-primary/10 dark:bg-primary/20">
+                            <span class="material-symbols-outlined text-primary text-4xl">favorite</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-display mb-2 text-secondary dark:text-white">Terapia de Casal
+                        </h3>
+                        <p class="text-text-muted-light dark:text-text-muted-dark">Melhore a comunicação, resolva
+                            conflitos e fortaleça os laços afetivos em seu relacionamento.</p>
+                    </div>
+                    <div
+                        class="bg-surface-light dark:bg-surface-dark p-8 rounded-lg shadow-lg text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div
+                            class="inline-flex items-center justify-center w-20 h-20 mb-6 rounded-full bg-primary/10 dark:bg-primary/20">
+                            <span class="material-symbols-outlined text-primary text-4xl">groups</span>
+                        </div>
+                        <h3 class="text-xl font-bold font-display mb-2 text-secondary dark:text-white">Terapia Familiar
+                        </h3>
+                        <p class="text-text-muted-light dark:text-text-muted-dark">Promova a harmonia e o entendimento
+                            nas relações familiares, construindo um ambiente saudável.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-20 bg-background-light dark:bg-background-dark" id="faq">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-secondary dark:text-white">Perguntas
+                        Frequentes</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mt-2"></div>
+                </div>
+                <div class="max-w-3xl mx-auto space-y-4" x-data="{ open: 0 }">
+                    <div class="bg-surface-light dark:bg-surface-dark rounded-lg shadow-md overflow-hidden">
+                        <button @click="open = (open === 1 ? 0 : 1)"
+                            class="w-full text-left p-6 flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                            <span class="text-lg font-semibold text-secondary dark:text-white">O que é terapia?</span>
+                            <span :class="{ 'rotate-180': open === 1 }"
+                                class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                        </button>
+                        <div class="overflow-hidden transition-all duration-500 ease-in-out" x-collapse=""
+                            x-show="open === 1">
+                            <div class="p-6 pt-0">
+                                <p class="text-text-muted-light dark:text-text-muted-dark">A terapia, ou psicoterapia, é
+                                    um processo colaborativo entre um terapeuta e um cliente, focado em ajudar a pessoa
+                                    a entender e resolver seus problemas emocionais, comportamentais e de
+                                    relacionamento. É um espaço seguro para explorar pensamentos e sentimentos, e
+                                    desenvolver estratégias para uma vida mais saudável e satisfatória.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-light dark:bg-surface-dark rounded-lg shadow-md overflow-hidden">
+                        <button @click="open = (open === 2 ? 0 : 2)"
+                            class="w-full text-left p-6 flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                            <span class="text-lg font-semibold text-secondary dark:text-white">Quando devo procurar um
+                                psicólogo?</span>
+                            <span :class="{ 'rotate-180': open === 2 }"
+                                class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                        </button>
+                        <div class="overflow-hidden transition-all duration-500 ease-in-out" x-collapse=""
+                            x-show="open === 2">
+                            <div class="p-6 pt-0">
+                                <p class="text-text-muted-light dark:text-text-muted-dark">Você pode procurar ajuda
+                                    psicológica por diversas razões: se estiver sentindo tristeza persistente,
+                                    ansiedade, dificuldades em relacionamentos, passando por uma grande mudança de vida,
+                                    luto, ou simplesmente desejar autoconhecimento e desenvolvimento pessoal. Não é
+                                    preciso estar em crise para se beneficiar da terapia.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-light dark:bg-surface-dark rounded-lg shadow-md overflow-hidden">
+                        <button @click="open = (open === 3 ? 0 : 3)"
+                            class="w-full text-left p-6 flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                            <span class="text-lg font-semibold text-secondary dark:text-white">Quanto tempo dura um
+                                tratamento?</span>
+                            <span :class="{ 'rotate-180': open === 3 }"
+                                class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                        </button>
+                        <div class="overflow-hidden transition-all duration-500 ease-in-out" x-collapse=""
+                            x-show="open === 3">
+                            <div class="p-6 pt-0">
+                                <p class="text-text-muted-light dark:text-text-muted-dark">A duração do tratamento
+                                    psicológico varia de pessoa para pessoa e depende dos objetivos e da complexidade
+                                    das questões a serem trabalhadas. Algumas pessoas se beneficiam de terapia de curto
+                                    prazo (algumas semanas ou meses), enquanto outras podem precisar de um processo de
+                                    longo prazo para questões mais profundas. Isso será discutido e acordado entre você
+                                    e a psicóloga.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-surface-light dark:bg-surface-dark rounded-lg shadow-md overflow-hidden">
+                        <button @click="open = (open === 4 ? 0 : 4)"
+                            class="w-full text-left p-6 flex justify-between items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-primary">
+                            <span class="text-lg font-semibold text-secondary dark:text-white">As sessões são
+                                confidenciais?</span>
+                            <span :class="{ 'rotate-180': open === 4 }"
+                                class="material-symbols-outlined transition-transform duration-300">expand_more</span>
+                        </button>
+                        <div class="overflow-hidden transition-all duration-500 ease-in-out" x-collapse=""
+                            x-show="open === 4">
+                            <div class="p-6 pt-0">
+                                <p class="text-text-muted-light dark:text-text-muted-dark">Sim. O sigilo é um princípio
+                                    fundamental da psicologia e é protegido por lei. Tudo o que for discutido durante as
+                                    sessões é estritamente confidencial, garantindo um ambiente seguro e de confiança
+                                    para que você possa se expressar livremente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-20 bg-surface-light dark:bg-surface-dark" id="testimonials">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-secondary dark:text-white">Depoimentos
+                    </h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mt-2"></div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-background-light dark:bg-background-dark p-8 rounded-lg shadow-lg">
+                        <p class="text-text-muted-light dark:text-text-muted-dark italic mb-6">"A terapia com a Dra.
+                            Aline foi transformadora. Encontrei um espaço de acolhimento e ferramentas para lidar com
+                            minha ansiedade. Sou muito grata!"</p>
+                        <div class="flex items-center">
+                            <img alt="Foto de uma cliente fictícia chamada Ana P."
+                                class="w-12 h-12 rounded-full object-cover mr-4"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBzj6iSzW5LfzapLBt0girtrvatB1Wj482DoCq3rHSul-uDlxOHWa8UDG4q9AAfdOUaACgrHc_HiMr3zVqr3sXAktPnq9Wr2yjGaXbjJWVuPncC_z6JAPRAO7W2j-4USVvIZkOikKXJr3XYdNEMxTtWMAazbrRx0FQYkh3od31wX6DZJSfMljuzu5a3ZfUdxYm1acTjGNW-LrfNIoTK0sRKqoRXXKQ_3K1OYsT90C0gCPtfmxcGmuCyE-saV3Fm4aHBeBj-g_hw7vcJ" />
+                            <div>
+                                <p class="font-bold text-secondary dark:text-white">Ana P.</p>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Cliente</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-background-light dark:bg-background-dark p-8 rounded-lg shadow-lg">
+                        <p class="text-text-muted-light dark:text-text-muted-dark italic mb-6">"O processo terapêutico
+                            me ajudou a me entender melhor e a tomar decisões mais conscientes na minha vida. Recomendo
+                            a todos."</p>
+                        <div class="flex items-center">
+                            <img alt="Foto de um cliente fictício chamado Marcos L."
+                                class="w-12 h-12 rounded-full object-cover mr-4"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuCBhz8uvWO_jKle0yhx-mEPer5Cc9hiEVmMSvFdiViTQD8SIE4YzYXrOTCwvW4BcaxQtfU5jP97r5mz7er88jpjss-WD-vmhsDD2ZVWaE2eHtFyhjgdfyvWlpknkhtFFR48oDV49h4i-u-BfwCl27oO8T6Zm3oR-E8CvEx7xZ6Sk8bi8jR9Eji0p2qnQCCH6f26GmVYSRXb8BVoPXAMaDfxiD1PVxApIoZbc3xg6i9MXtDdyl9J3MqNb3K8v9pwYL30AOFkMhdU9ZqD" />
+                            <div>
+                                <p class="font-bold text-secondary dark:text-white">Marcos L.</p>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Cliente</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="bg-background-light dark:bg-background-dark p-8 rounded-lg shadow-lg">
+                        <p class="text-text-muted-light dark:text-text-muted-dark italic mb-6">"Profissional excelente,
+                            muito atenciosa e competente. Senti uma melhora significativa desde que iniciei as sessões."
+                        </p>
+                        <div class="flex items-center">
+                            <img alt="Foto de uma cliente fictícia chamada Carla S."
+                                class="w-12 h-12 rounded-full object-cover mr-4"
+                                src="https://lh3.googleusercontent.com/aida-public/AB6AXuASK7xfw60ztj5NlJPEv_pQEZ-q5SDaaz06dITSsovshau-WoGCCwhqID4aDMUlOomfKN1RqGt1qUneh4JYLX5MgHxgYpKcMty-VChJN81TTMiDcD5FwOvMZ5Hh1UbS_8JPOA0FDUisr_XHxLfjp7WKQdGshcY6LSbmff642v9d4aUesK5Ugq5wKdfu9dsf2nPwb6FI9DWxNinX7RXxi0U8Mk7u3FbphuDl23LF9g2gO_o5j-jnafOQxYMSsl1_BVBHLwDvexPdlWMw" />
+                            <div>
+                                <p class="font-bold text-secondary dark:text-white">Carla S.</p>
+                                <p class="text-sm text-text-muted-light dark:text-text-muted-dark">Cliente</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-20 bg-background-light dark:bg-background-dark" id="contact">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl md:text-4xl font-bold font-display text-secondary dark:text-white">Contato</h2>
+                    <div class="w-24 h-1 bg-primary mx-auto mt-2"></div>
+                </div>
+                <div class="flex flex-col lg:flex-row gap-12">
+                    <div class="lg:w-1/3">
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-md mb-6 flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-3xl mt-1">location_on</span>
+                            <div>
+                                <h4 class="font-bold text-lg text-secondary dark:text-white">Localização</h4>
+                                <p class="text-text-muted-light dark:text-text-muted-dark">Av. Paulista, 1234 - São
+                                    Paulo, SP</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-md mb-6 flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-3xl mt-1">mail</span>
+                            <div>
+                                <h4 class="font-bold text-lg text-secondary dark:text-white">Email</h4>
+                                <p class="text-text-muted-light dark:text-text-muted-dark">contato@draline.com.br</p>
+                            </div>
+                        </div>
+                        <div
+                            class="bg-surface-light dark:bg-surface-dark p-6 rounded-lg shadow-md mb-6 flex items-start gap-4">
+                            <span class="material-symbols-outlined text-primary text-3xl mt-1">call</span>
+                            <div>
+                                <h4 class="font-bold text-lg text-secondary dark:text-white">Telefone</h4>
+                                <p class="text-text-muted-light dark:text-text-muted-dark">(11) 98765-4321</p>
+                            </div>
+                        </div>
+                        <div class="rounded-lg overflow-hidden shadow-md">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3483.5265662658003!2d-51.1950069616282!3d-29.17862046784111!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951ea33b8016405d%3A0x4e595b960543df38!2sAv.%20Rio%20Branco%2C%201514%20-%20S%C3%A3o%20Pelegrino%2C%20Caxias%20do%20Sul%20-%20RS%2C%2095096-000!5e0!3m2!1sen!2sbr!4v1763862217810!5m2!1sen!2sbr"
+                                width="600" height="350" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
+                    </div>
+                    <div class="lg:w-2/3 bg-surface-light dark:bg-surface-dark p-8 rounded-lg shadow-md">
+                        <form action="#" method="POST">
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                                <div>
+                                    <label
+                                        class="block mb-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark"
+                                        for="name">Seu Nome</label>
+                                    <input
+                                        class="w-full bg-background-light dark:bg-background-dark border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-primary focus:border-primary transition"
+                                        id="name" placeholder="Nome Completo" type="text" />
+                                </div>
+                                <div>
+                                    <label
+                                        class="block mb-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark"
+                                        for="email">Seu Email</label>
+                                    <input
+                                        class="w-full bg-background-light dark:bg-background-dark border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-primary focus:border-primary transition"
+                                        id="email" placeholder="seu.email@exemplo.com" type="email" />
+                                </div>
+                            </div>
+                            <div class="mb-6">
+                                <label
+                                    class="block mb-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark"
+                                    for="subject">Assunto</label>
+                                <input
+                                    class="w-full bg-background-light dark:bg-background-dark border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-primary focus:border-primary transition"
+                                    id="subject" placeholder="Sobre o que gostaria de falar?" type="text" />
+                            </div>
+                            <div class="mb-6">
+                                <label
+                                    class="block mb-2 text-sm font-medium text-text-muted-light dark:text-text-muted-dark"
+                                    for="message">Mensagem</label>
+                                <textarea
+                                    class="w-full bg-background-light dark:bg-background-dark border border-gray-300 dark:border-gray-600 rounded-lg p-3 focus:ring-primary focus:border-primary transition"
+                                    id="message" placeholder="Deixe sua mensagem..." rows="5"></textarea>
+                            </div>
+                            <div class="text-center">
+                                <button
+                                    class="bg-primary text-white font-semibold py-3 px-8 rounded-full shadow-lg hover:bg-opacity-90 transform hover:-translate-y-1 transition-all duration-300"
+                                    type="submit">
+                                    Enviar Mensagem
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-surface-light dark:bg-surface-dark py-8 border-t border-gray-200 dark:border-gray-700">
+        <div class="container mx-auto px-6 text-center text-text-muted-light dark:text-text-muted-dark">
+            <p>© Desenvolvido por <strong>Lzrt Websites</strong>. Todos os Direitos Reservados</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const root = document.documentElement;
+            const toggleBtn = document.getElementById('theme-toggle-button');
+
+            function applyTheme(theme) {
+                if (theme === 'dark') {
+                    root.classList.add('dark');
+                } else {
+                    root.classList.remove('dark');
+                }
+            }
+
+            // Load saved preference
+            const saved = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+            if (saved === 'dark' || (!saved && prefersDark)) {
+                applyTheme('dark');
+            } else {
+                applyTheme('light');
+            }
+
+            // Toggle on button click
+            if (toggleBtn) {
+                toggleBtn.addEventListener('click', function () {
+                    const isDark = root.classList.toggle('dark');
+                    localStorage.setItem('theme', isDark ? 'dark' : 'light');
+                });
+            }
+        })();
+    </script>
+
+    <script>
+        // Scroll progress bar: updates a thin line at the top as the user scrolls
+        (function () {
+            const bar = document.getElementById('progress-bar');
+            if (!bar) return;
+
+            let ticking = false;
+
+            function update() {
+                const doc = document.documentElement;
+                const scrollTop = (window.pageYOffset || doc.scrollTop) - (doc.clientTop || 0);
+                const scrollHeight = doc.scrollHeight - window.innerHeight;
+                const pct = scrollHeight > 0 ? (scrollTop / scrollHeight) * 100 : 0;
+                // Use width to represent progress (works well across browsers)
+                bar.style.width = pct + '%';
+                ticking = false;
+            }
+
+            function onScroll() {
+                if (!ticking) {
+                    window.requestAnimationFrame(update);
+                    ticking = true;
+                }
+            }
+
+            window.addEventListener('scroll', onScroll, { passive: true });
+            window.addEventListener('resize', onScroll);
+            // initialize
+            onScroll();
+        })();
+    </script>
+
+</body>
+
+</html>
