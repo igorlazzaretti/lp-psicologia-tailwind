@@ -71,7 +71,7 @@
 
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a class="text-2xl font-bold font-display text-secondary dark:text-primary" href="#hero">Dra. Aline</a>
-            <nav class="hidden md:flex items-center space-x-8">
+            <nav id="main-nav" class="hidden md:flex items-center space-x-8">
                 <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#hero">Início</a>
                 <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#about">Sobre Mim</a>
                 <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#services">Serviços</a>
@@ -80,8 +80,23 @@
                     href="#testimonials">Depoimentos</a>
                 <a class="hover:text-primary dark:hover:text-primary transition-colors" href="#contact">Contato</a>
             </nav>
-            <!-- Theme toggle: moon = switch to dark, sun = switch to light -->
+            <!-- Mobile menu button (hamburger) + Theme toggle -->
             <div class="flex items-center">
+                <button id="mobile-menu-button" aria-label="Abrir menu" title="Abrir menu"
+                    class="md:hidden mr-2 p-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 transition">
+                    <!-- Hamburger icon -->
+                    <svg id="icon-hamburger" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" class="w-6 h-6 inline-block">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <!-- Close icon -->
+                    <svg id="icon-close" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" class="w-6 h-6 hidden">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
                 <button id="theme-toggle-button" aria-label="Alternar tema" title="Alternar tema"
                     class="ml-4 p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 transition">
                     <!-- Moon icon: visible in light mode (click to go dark) -->
@@ -437,6 +452,23 @@
         </div>
     </footer>
 
+    <!-- WhatsApp floating button (fixed bottom-left) -->
+    <!-- Replace the phone number in the href (country code + number, no + or dashes) -->
+    <a id="whatsapp-fab"
+        href="https://wa.me/5511999999999?text=Ol%C3%A1%2C%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es"
+        target="_blank" rel="noopener noreferrer" aria-label="Abrir WhatsApp"
+        class="fixed right-4 bottom-4 z-50 h-14 w-14 bg-[#25D366] hover:bg-[#1ebe57] rounded-full flex items-center justify-center text-white shadow-lg transition-transform transform hover:-translate-y-1">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-7 h-7">
+            <path
+                d="M20.52 3.48A11.93 11.93 0 0012 0C5.373 0 .001 5.373.001 12c0 2.116.555 4.188 1.605 6.03L0 24l6.15-1.6A11.94 11.94 0 0012 24c6.627 0 12-5.373 12-12 0-3.2-1.245-6.159-3.48-8.52zM12 21.75c-1.7 0-3.36-.44-4.8-1.27l-.34-.2-3.65.95.97-3.55-.22-.36A9.75 9.75 0 0112 2.25c5.38 0 9.75 4.37 9.75 9.75S17.38 21.75 12 21.75z" />
+            <path
+                d="M17.24 14.23c-.25-.12-1.48-.73-1.71-.81-.23-.08-.4-.12-.57.12-.17.25-.66.81-.81.98-.15.17-.3.19-.55.07-.25-.12-1.05-.38-2-1.24-.74-.66-1.24-1.48-1.38-1.73-.14-.25-.015-.38.11-.5.11-.11.25-.3.37-.45.12-.15.17-.25.25-.42.08-.17.04-.32-.02-.44-.07-.12-.57-1.37-.78-1.87-.21-.5-.43-.43-.57-.44-.15-.01-.32-.01-.49-.01-.17 0-.44.06-.67.32-.23.25-.87.85-.87 2.07s.89 2.4 1.01 2.57c.12.17 1.73 2.64 4.2 3.7 2.44 1.05 2.44.7 2.88.66.44-.04 1.43-.58 1.63-1.14.2-.56.2-1.04.14-1.15-.06-.11-.23-.17-.48-.29z"
+                fill="#fff" />
+        </svg>
+    </a>
+    <!-- Whatapp Icon -->
+
+
     <script>
         (function () {
             const root = document.documentElement;
@@ -499,6 +531,75 @@
             window.addEventListener('resize', onScroll);
             // initialize
             onScroll();
+        })();
+    </script>
+
+    <script>
+        // Mobile menu (hamburger) behavior: toggle nav visibility on small screens
+        (function () {
+            const mobileBtn = document.getElementById('mobile-menu-button');
+            const nav = document.getElementById('main-nav');
+            const iconHamburger = document.getElementById('icon-hamburger');
+            const iconClose = document.getElementById('icon-close');
+            if (!mobileBtn || !nav) return;
+
+            const mobileClasses = ['flex', 'flex-col', 'absolute', 'top-full', 'left-0', 'right-0', 'bg-surface-light', 'dark:bg-surface-dark', 'p-4', 'space-y-4', 'z-40'];
+
+            function openMenu() {
+                nav.classList.remove('hidden');
+                nav.classList.remove('space-x-8');
+                nav.classList.add(...mobileClasses);
+                if (iconHamburger) iconHamburger.classList.add('hidden');
+                if (iconClose) iconClose.classList.remove('hidden');
+                mobileBtn.setAttribute('aria-label', 'Fechar menu');
+            }
+
+            function closeMenu() {
+                nav.classList.add('hidden');
+                nav.classList.add('space-x-8');
+                mobileClasses.forEach(c => nav.classList.remove(c));
+                if (iconHamburger) iconHamburger.classList.remove('hidden');
+                if (iconClose) iconClose.classList.add('hidden');
+                mobileBtn.setAttribute('aria-label', 'Abrir menu');
+            }
+
+            mobileBtn.addEventListener('click', function () {
+                const isHidden = nav.classList.contains('hidden');
+                if (isHidden) {
+                    openMenu();
+                } else {
+                    closeMenu();
+                }
+            });
+
+            // Close menu when a link is clicked (mobile)
+            nav.querySelectorAll('a').forEach(a => {
+                a.addEventListener('click', function () {
+                    if (window.innerWidth < 768) closeMenu();
+                });
+            });
+
+            // Ensure correct state on resize (remove inline mobile classes when switching to md+)
+            window.addEventListener('resize', function () {
+                if (window.innerWidth >= 768) {
+                    // ensure nav shows as md:flex and icons reset
+                    nav.classList.remove('hidden');
+                    mobileClasses.forEach(c => nav.classList.remove(c));
+                    if (iconHamburger) iconHamburger.classList.remove('hidden');
+                    if (iconClose) iconClose.classList.add('hidden');
+                } else {
+                    // on small screens default to hidden
+                    if (!nav.classList.contains('flex')) nav.classList.add('hidden');
+                }
+            });
+
+            // Initialize icons state
+            if (window.innerWidth < 768) {
+                nav.classList.add('hidden');
+                if (iconClose) iconClose.classList.add('hidden');
+            } else {
+                if (iconHamburger) iconHamburger.classList.add('hidden');
+            }
         })();
     </script>
 

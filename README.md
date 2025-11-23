@@ -1,6 +1,6 @@
 <!--
-:construction: LP Psicologa
-Commit: First Commit
+:woman: LP Psicologa
+Commit: Readme link, Menu Hamburguer e Whatsapp
  -->
 
 # 𝚿 LP Psicologa
@@ -9,8 +9,8 @@ Site básico de Psicologa para divulgação de serviços com email e envio de wh
 
 - HTML e CSS para a estrutura do site.
 - Javascript para o funcionamento do site e a criação de novos games.
-- Confira o projeto neste <a href="https://igorlazzaretti.github.io/retrogames/"> link</a>.
-- Fotos do Projeto neste <a href="https://flic.kr/s/aHBqjCyqp9">link</a>.
+- Confira o projeto neste <a href="https://lp-psicologia-tailwind.vercel.app/"> link</a>.
+
 
 ## 🚀 Tecnologias Utilizadas
 
